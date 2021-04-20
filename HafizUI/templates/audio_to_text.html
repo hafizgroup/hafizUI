@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="/static/header_file.css">
+<link rel="stylesheet" type="text/css" href="/static/footer_file.css">
+<link rel="stylesheet" type="text/css" href="/static/main.css">
+<link rel="stylesheet" type="text/css" href="/static/audio_to_text.css">
+
+<script src="/static/recorder.js"></script>
+<script src="/static/audiodisplay.js"></script>
+<script src="/static/main.js"></script>
+<script src="/static/recorderWorker.js"></script>
+
+</head>
+    <body>
+    
+\
+    <div id="loader">
+        <div class="row " style="position:relative;">
+            <div class="column1">
+                <h2>Record Audio</h2>
+                    <p>
+                        <button id="start" class="btn btn-success" onclick="startRecording(); changeColorStart('stop','#ff0000')" disabled>Start</button>
+                        <button id="stop" class="btn btn-danger" onclick="stopRecording(); changeColorStop('stop','#228B22')" disabled>Stop</button>
+                        <script>
+                            function changeColorStart(id, color)
+                             {
+                            document.getElementById(id).style.color = color; // forecolor
+                            document.getElementById("start-recording-label").style.display = "block";
+                                };
+                            function changeColorStop(id, color)
+                             {
+                            document.getElementById(id).style.color = color; // forecolor
+                            document.getElementById("start-recording-label").style.display = "none";
+                            document.getElementById("end-recording-label").style.display = "block";
+
+                                }
+                        </script>
+                    </p>
+            </div>
+            <label id="start-recording-label" style="display: none">Recording In Progress</label>
+            <label id="end-recording-label" style="display: none">Recording Complete </label>
+            <div class="column2" >
+                <h2>Audio Prediction</h2>
+                <p class="glow" id="output" style="font-size: 20px;"></p>
+                
+                
+            </div>
+        </div>
+    </div>
+    </body>
+    
+</html>
