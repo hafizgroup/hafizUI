@@ -80,13 +80,12 @@ def audio_to_text():
 @app.route('/audio', methods=['POST'])
 def audio():
     r = sr.Recognizer()
+
     with open('upload/audio.wav', 'wb') as f:
         f.write(request.data)
   
     with sr.AudioFile('upload/audio.wav') as source:
         audio_data = r.record(source)
-		select = request.form.get('audio-models')
-    	print(str(select)) # just to see what select is
         text = r.recognize_google(audio_data, language = "ar-SA")
         print(text)
         return_text = " Predicted Verse: <br> " 
